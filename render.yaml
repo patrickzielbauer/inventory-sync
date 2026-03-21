@@ -1,0 +1,16 @@
+# render.yaml
+# This file tells Render.com how to run the sync script.
+# It will run automatically every 10 minutes.
+
+services:
+  - type: cron
+    name: kickflip-inventory-sync
+    runtime: node
+    schedule: "*/10 * * * *"   # every 10 minutes — change to "*/5 * * * *" for every 5 min
+    buildCommand: ""            # nothing to build
+    startCommand: node sync.js
+    envVars:
+      - key: AMPLIFIER_API_KEY
+        sync: false             # you'll paste this value in the Render dashboard
+      - key: KICKFLIP_API_KEY
+        sync: false             # same here

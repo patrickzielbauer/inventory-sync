@@ -1,0 +1,12 @@
+{
+  "name": "kickflip-amplifier-inventory-sync",
+  "version": "1.0.0",
+  "description": "Syncs inventory from Amplifier (3PL) to Kickflip on a schedule",
+  "main": "sync.js",
+  "scripts": {
+    "start": "node sync.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
