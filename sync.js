@@ -90,7 +90,8 @@ async function fetchKickflipLocationId() {
   });
 
   if (!response.ok) {
-    throw new Error(`Kickflip location API error: ${response.status} ${response.statusText}`);
+    const errBody = await response.text();
+    throw new Error(`Kickflip location API error: ${response.status} ${response.statusText} — ${errBody}`);
   }
 
   const data = await response.json();
