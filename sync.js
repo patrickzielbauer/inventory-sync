@@ -55,6 +55,7 @@ async function fetchKickflipLocationId() {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${KICKFLIP_API_KEY}`,
+      'x-tenant-id': 'hausoftiles',
       'Content-Type': 'application/json',
     },
   });
@@ -102,6 +103,7 @@ async function updateKickflipInventory(locationId, amplifierItems) {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${KICKFLIP_API_KEY}`,
+      'x-tenant-id': 'hausoftiles',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ updates }),
