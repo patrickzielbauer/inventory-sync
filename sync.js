@@ -16,8 +16,8 @@ const KICKFLIP_API_KEY  = process.env.KICKFLIP_API_KEY;
 const AMPLIFIER_INVENTORY_URL = 'https://api.amplifier.com/reports/inventory/current';
 
 // Kickflip endpoints (confirmed from gokickflip.com API docs)
-const KICKFLIP_LOCATION_URL  = 'https://app.gokickflip.com/api/v1/inventory/location';
-const KICKFLIP_INVENTORY_URL = 'https://app.gokickflip.com/api/v1/inventory';
+const KICKFLIP_LOCATION_URL  = 'https://api.mycustomizer.com/v1/inventory/locations/default';
+const KICKFLIP_INVENTORY_URL = 'https://api.mycustomizer.com/v1/inventory/locations';
 
 
 // ============================================================
@@ -127,13 +127,13 @@ async function updateKickflipInventory(locationId, amplifierItems) {
     return;
   }
 
-  const response = await fetch(`${KICKFLIP_INVENTORY_URL}?locationId=${locationId}`, {
+  const response = await fetch(`${KICKFLIP_INVENTORY_URL}/${locationId}/items/bulk`, {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${KICKFLIP_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(updates),
+    body: JSON.stringify({ updates }),
   });
 
   if (!response.ok) {
