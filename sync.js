@@ -99,7 +99,7 @@ async function updateKickflipInventory(locationId, amplifierItems) {
 
   console.log(`  Sending ${updates.length} SKU updates to Kickflip...`);
 
-  const response = await fetch(`${KICKFLIP_INVENTORY_URL}/${locationId}/items`, {
+  const response = await fetch(`${KICKFLIP_INVENTORY_URL}/${locationId}/items/bulk`, {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${KICKFLIP_API_KEY}`,
